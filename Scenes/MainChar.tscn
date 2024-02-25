@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqc5vnsnxruyq"]
+
+[ext_resource type="Texture2D" uid="uid://dqj2ygy61nt6u" path="res://Assets/Game/MainChar.png" id="1_1jqna"]
+[ext_resource type="Script" path="res://Scenes/MainChar.gd" id="1_6xm3m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnf88"]
+size = Vector2(15, 26)
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_khbf0"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2vtno"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7fpof"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gjx46"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_flj6h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5lqnj"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_khbf0")
+states/Idle/position = Vector2(476, 105)
+states/walk/node = SubResource("AnimationNodeBlendSpace2D_2vtno")
+states/walk/position = Vector2(623, 105)
+transitions = ["Idle", "walk", SubResource("AnimationNodeStateMachineTransition_7fpof"), "walk", "Idle", SubResource("AnimationNodeStateMachineTransition_gjx46"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_flj6h")]
+
+[node name="MainChar" type="CharacterBody2D"]
+script = ExtResource("1_6xm3m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1jqna")
+hframes = 8
+vframes = 9
+frame = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_tnf88")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_5lqnj")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(-0.00105822, 0.034965)
