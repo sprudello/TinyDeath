@@ -16,11 +16,11 @@ script = ExtResource("1_c4mc2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-offset_right = 2559.0
-offset_bottom = 1592.0
+offset_right = 2558.0
+offset_bottom = 1600.0
 texture = ExtResource("1_nbwt3")
 expand_mode = 5
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

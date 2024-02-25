@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq6kuj7ho6uos"]
+[gd_scene load_steps=6 format=3 uid="uid://cq6kuj7ho6uos"]
 
 [ext_resource type="Texture2D" uid="uid://cpyfmknb6q77y" path="res://Assets/Game/mainlevbuild.png" id="1_0bgjo"]
 [ext_resource type="PackedScene" uid="uid://dqc5vnsnxruyq" path="res://Scenes/MainChar.tscn" id="2_jdkni"]
+[ext_resource type="PackedScene" uid="uid://bmvexde5uetug" path="res://Scenes/enemy0.tscn" id="3_0jf0i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8rrp"]
 texture = ExtResource("1_0bgjo")
@@ -1049,3 +1050,6 @@ remote_path = NodePath("../../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(144, 112)
 position_smoothing_enabled = true
+
+[node name="Enemy0" parent="." instance=ExtResource("3_0jf0i")]
+position = Vector2(249, 189)
